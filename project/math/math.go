@@ -7,3 +7,7 @@ func Average(xs []float64) float64 {
   }
   return total / float64(len(xs))
 }
+func ToHigh(x int) bool {
+  if (x > 50){ return true}else { return false}
+
+}
