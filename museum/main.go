@@ -30,7 +30,7 @@ func main() {
 	server.HandleFunc("/home", handleHome)
 	server.HandleFunc("/template", handleTemplate)
 	server.HandleFunc("/api/exhibition", api.Get)
-	server.HandleFunc("/api/exhibition/post", api.Post)
+	//server.HandleFunc("/api/exhibition/post", api.Post)
 	fs := http.FileServer(http.Dir("./public"))
 	server.Handle("/", fs)
 	err := http.ListenAndServe(":5555", server)
