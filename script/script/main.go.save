@@ -12,7 +12,7 @@ func main() {
     // Open the CSV file for reading
     file, err := os.Open("work.csv")
     if err != nil {
-	panic(err)
+        fmt.Println("Error opening CSV file:", err)
         return
     }
     defer file.Close()
@@ -21,7 +21,7 @@ func main() {
     reader := csv.NewReader(file)
     records, err := reader.ReadAll()
     if err != nil {
-	panic(err)
+        fmt.Println("Error reading CSV file:", err)
         return
     }
 
@@ -33,7 +33,7 @@ func main() {
     // Create a new CSV file for writing the filtered data
     outFile, err := os.Create("filtered_output.csv")
     if err != nil {
-	panic(err)
+        fmt.Println("Error creating output CSV file:", err)
         return
     }
     defer outFile.Close()
@@ -47,7 +47,7 @@ func main() {
         if len(record) > filterColumn && strings.Contains(record[filterColumn],filterValue)==true {
 		err := writer.Write(record)
 		if err!=nil{
-			panic(err)
+			fmt.Errorf("Error : %v",err)
 		}
         }
     }
