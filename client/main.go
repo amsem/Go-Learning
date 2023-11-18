@@ -12,16 +12,18 @@ const (
 )
 
 func main() {
-	msg := ""
-	for msg == "" {
+	var msg string
+	//for msg == "" {
 		//establish connection
 		connection, err := net.Dial(SERVER_TYPE, SERVER_HOST+":"+SERVER_PORT)
-		if err != nil {
+		defer connection.Close()
+        
+        if err != nil {
 			panic(err)
 		}
 		// GET USER MESSAGE
 		fmt.Print("Message : ")
-		fmt.Scanf("%v", &msg)
+		fmt.Scanf(`%v`, &msg)
 		///send some data
 
 		_, err = connection.Write([]byte(msg))
@@ -31,7 +33,6 @@ func main() {
 			fmt.Println("Error reading:", err.Error())
 		}
 		fmt.Println("Received: ", string(buffer[:mLen]))
-		defer connection.Close()
-		msg = ""
-	}
+	
+
 }

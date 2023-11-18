@@ -26,10 +26,8 @@ func main() {
     }
 
     // Define the criteria for filtering (for example, filter rows where column 2 equals "filter_value")
-    filterColumn := 0     // Adjust the column index (0-based) you want to filter on
-    fmt.Print("Enter the Company that you search : \t")
-    fmt.Scanf("%s",&filterValue) // Adjust the filter value
-
+    filterColumn := 4      // Adjust the column index (0-based) you want to filter on
+    filterValue = "Global Business Mobility"
     // Create a new CSV file for writing the filtered data
     outFile, err := os.Create("filtered_output.csv")
     if err != nil {
